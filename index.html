@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>APARA Asia</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC&family=Courier+Prime&family=Dancing+Script&family=Delius+Swash+Caps&family=Edu+QLD+Hand&family=Libertinus+Mono&family=Permanent+Marker&family=Playfair+Display&family=Roboto+Condensed&family=Sour+Gummy&family=UnifrakturMaguntia&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Noto+Sans+KR&family=Rubik&family=Heebo&family=Noto+Sans+Thai&family=Baloo+2&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      font-weight: 300;
+      color: white;
+    }
+
+    .hero-section {
+      height: 55vh;
+      /* full viewport height */
+      position: relative;
+      z-index: 1;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      /* Allows clicks to pass through */
+    }
+
+
+    #circuit-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: #111111;
+    }
+
+    #animated-word {
+      display: inline-block;
+      transition: font-family 0.4s ease, transform 0.4s ease;
+      white-space: nowrap;
+      color: white;
+    }
+
+    h1,
+    h4 {
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.493);
+    }
+
+    .carousel h3 {
+      font-family: 'IBM Plex Serif', serif;
+      font-weight: 300;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .carousel-indicators [data-bs-target] {
+      background-color: #252525;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: rgba(0, 0, 0, 0.5);
+      /* darker background */
+      background-size: 100% 100%;
+      border-radius: 25%;
+    }
+
+    .carousel-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 3rem 1rem;
+      background-color: #ffffff;
+    }
+
+    #featureCarousel {
+      max-width: 1200px;
+      width: 100%;
+      max-height: 1200px;
+      overflow: hidden;
+    }
+
+    /* Maintain image ratio and crop using object-fit */
+    .carousel-item img {
+      width: 100%;
+      height: 1000px;
+      object-fit: cover;
+      object-position: center;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Navbar container -->
+  <div id="navbar-container"></div>
+
+  <!-- Hero Section -->
+  <section class="hero-section d-flex align-items-center justify-content-center text-center position-relative">
+    <canvas id="hero-canvas"></canvas>
+
+    <div class="container position-relative" style="z-index: 1;">
+      <h1 class="d-flex justify-content-center align-items-center gap-2 flex-wrap mb-5">
+        <span id="augmenting-wrapper">
+          <span id="animated-word" style="font-size: 3.7rem;">Augmenting </span>
+        </span>
+        <span class="fw-bold" style="font-size: 3.7rem;">Human Potential</span>
+      </h1>
+      <h4>Leveraging AI and Robotics Technologies</h4>
+    </div>
+  </section>
+
+  <!-- Carousel Section -->
+  <section class="carousel-wrapper">
+    <div id="featureCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <!-- Dots (Indicators) -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#featureCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#featureCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#featureCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#featureCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#featureCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#featureCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+        <button type="button" data-bs-target="#featureCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+      </div>
+
+      <!-- Slides -->
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <img src="assets/home/banner-1.jpg" class="d-block mx-auto"
+            style="max-height: 500px; height: auto; width: auto;">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>AI for Education</h5>
+            <p>Transforming how we learn and teach.</p>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <img src="assets/home/banner-76.jpg" class="d-block mx-auto"
+            style="max-height: 500px; height: auto; width: auto;">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Robotics in Industry</h5>
+            <p>Automating the future of work.</p>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <img src="assets/home/banner-77.jpg" class="d-block mx-auto"
+            style="max-height: 500px; height: auto; width: auto;">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Empowering the Future</h5>
+            <p>AI and robotics shaping human potential.</p>
+          </div>
+        </div>
+        <!-- Slide 4 -->
+        <div class="carousel-item">
+          <img src="assets/home/banner-78.jpg" class="d-block mx-auto"
+            style="max-height: 500px; height: auto; width: auto;">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Robotics in Industry</h5>
+            <p>Automating the future of work.</p>
+          </div>
+        </div>
+        <!-- Slide 5 -->
+        <div class="carousel-item">
+          <img src="assets/home/banner-79.jpg" class="d-block mx-auto"
+            style="max-height: 500px; height: auto; width: auto;">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Empowering the Future</h5>
+            <p>AI and robotics shaping human potential.</p>
+          </div>
+        </div>
+        <!-- Slide 6 -->
+        <div class="carousel-item">
+          <img src="assets/home/banner-80.jpg" class="d-block mx-auto"
+            style="max-height: 500px; height: auto; width: auto;">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Robotics in Industry</h5>
+            <p>Automating the future of work.</p>
+          </div>
+        </div>
+        <!-- Slide 7 -->
+        <div class="carousel-item">
+          <img src="assets/home/AIB_ALC_Ad-1.png" class="d-block mx-auto"
+            style="max-height: 500px; height: auto; width: auto;">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Empowering the Future</h5>
+            <p>AI and robotics shaping human potential.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Arrows (Controls) -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#featureCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#featureCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="d-flex justify-content-center mx-3 bg-white">
+    <div style="width: 1000px; height: 1px; background-color: #00000018;"></div>
+  </div>
+
+  <section class="py-5 bg-white text-black">
+    <div class="container">
+      <div class="row text-center">
+        <!-- Column 1 -->
+        <div class="col-md-4 mb-4">
+          <img src="assets/home/securing-commitment.jpg" alt="Securing Commitment" class="mb-3 img-fluid"
+            style="max-height: 180px;">
+          <h4 class="mb-2">Securing Commitment</h4>
+          <p class="text-muted">Fear of Job Displacement by Robots<br>Use of Robotics to Augment Human Potential</p>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col-md-4 mb-4">
+          <img src="assets/home/struggling-with.jpg" alt="Identifying Tech" class="mb-3 img-fluid"
+            style="max-height: 180px;">
+          <h4 class="mb-2">Struggling With</h4>
+          <p class="text-muted">Identifying and Deploying Effective Technology<br>Connected with a Network of Technology
+            Enablers</p>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="col-md-4 mb-4">
+          <img src="assets/home/stressing-over.jpg" alt="Business Transformation" class="mb-3 img-fluid"
+            style="max-height: 180px;">
+          <h4 class="mb-2">Stressing Over</h4>
+          <p class="text-muted">Long, Protracted Process of Business Transformation<br>Enjoy the Experience of
+            Transformation Journey</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="d-flex justify-content-center mx-3 bg-white">
+    <div style="width: 1000px; height: 1px; background-color: #00000018;"></div>
+  </div>
+
+  <section class="py-5 bg-white text-dark">
+    <div class="container">
+      <!-- Section Title -->
+      <div class="text-center mb-5">
+        <h2 class="mb-3">Pillars of Augmented Robotics Technology</h2>
+        <p class="lead">We see the critical relevance of augmented technologies to help businesses and societies pivot
+          to a better quality of life.</p>
+      </div>
+
+      <!-- Pillars Grid -->
+      <div class="row text-center g-4">
+        <!-- Pillar 1 -->
+        <div class="col-md-4">
+          <img src="assets/home/network.svg" alt="Digital Community" class="mb-3 img-fluid" style="max-height: 80px;">
+          <h5>Developing Digital Community</h5>
+          <p>Digital communities form the basic platform for our members' interaction and peer-to-peer learning.</p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="col-md-4">
+          <img src="assets/home/360 degrees.svg" alt="Global Use Cases" class="mb-3 img-fluid"
+            style="max-height: 80px;">
+          <h5>Connecting w/ Global Use Cases</h5>
+          <p>Monitoring global trends in the adoption of technologies to facilitate human-machine collaboration.</p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="col-md-4">
+          <img src="assets/home/eye.svg" alt="Future of Work" class="mb-3 img-fluid" style="max-height: 80px;">
+          <h5>Preparing the Future of Work</h5>
+          <p>Reviewing work process, skills, and environment to facilitate use of augmented technologies.</p>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="col-md-4">
+          <img src="assets/home/tablet.svg" alt="Piloting Tech" class="mb-3 img-fluid" style="max-height: 80px;">
+          <h5>Piloting Proven Technologies</h5>
+          <p>Engaging on programs and projects to build MVP (Minimum Viable Product).</p>
+        </div>
+
+        <!-- Pillar 5 -->
+        <div class="col-md-4">
+          <img src="assets/home/heart rate.svg" alt="Improving Life" class="mb-3 img-fluid" style="max-height: 80px;">
+          <h5>Improving the Quality of Life</h5>
+          <p>Sharing proven methodology and best practices for adoption in the transformation journey.</p>
+        </div>
+
+        <!-- Pillar 6 -->
+        <div class="col-md-4">
+          <img src="assets/home/head.svg" alt="Maximizing Potential" class="mb-3 img-fluid" style="max-height: 80px;">
+          <h5>Maximizing Human Potential</h5>
+          <p>Upskilling digital competency and human-machine collaboration skills to outperform current individual
+            expectations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <canvas id="circuit-bg"></canvas>
+
+  <section class="py-5 text-white">
+    <div class="container py-5">
+      <div class="row justify-content-center py-5">
+        <div class="col-lg-10 text-center">
+          <blockquote class="blockquote">
+            <p class="mb-4 fs-4" style="font-family: 'IBM Plex Serif', serif; font-weight: 300;">
+              "We wish to convey a very relevant message to the business enterprises and society at large, that AI &
+              Robotics technologies <strong>MUST</strong> be leveraged to Augment Human Potential.
+              <br><br>
+              As such, by understanding applicable technologies and how it can be leveraged to redesign our future of
+              work, the human workforce and management can re-skill to become <strong>Masters of Technology</strong>."
+            </p>
+            <footer class="blockquote-footer text-white mt-4">
+              Shanlynn Lee <br>
+              <cite title="President, Asia Pacific Assistive Robotics Association">
+                President, Asia Pacific Assistive Robotics Association
+              </cite>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 bg-white text-dark">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="text-center mb-5">
+        <h2 class="mb-3">Partners We've Worked With</h2>
+        <p class="lead text-muted">
+          We collaborate with counterpart industry associations with a common cause as well as research institutes and
+          universities on practical research projects. Here are our partners with formal arrangements:
+        </p>
+      </div>
+      <!-- Logos Grid -->
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center align-items-center text-center">
+
+        <!-- Logo 1 -->
+        <div class="col">
+          <img src="assets/logos/apara-repa.png" class="img-fluid logo-img" alt="Partner 1 Logo">
+        </div>
+
+        <!-- Logo 2 -->
+        <div class="col">
+          <img src="assets/logos/apara-grc.png" class="img-fluid logo-img" alt="Partner 2 Logo">
+        </div>
+
+        <!-- Logo 3 -->
+        <div class="col">
+          <img src="assets/logos/apara-iara.png" class="img-fluid logo-img" alt="Partner 3 Logo">
+        </div>
+
+        <!-- Logo 4 -->
+        <div class="col">
+          <img src="assets/logos/apara-zria.png" class="img-fluid logo-img" alt="Partner 4 Logo">
+        </div>
+
+        <!-- Logo 5 -->
+        <div class="col">
+          <img src="assets/logos/apara-kar.png" class="img-fluid logo-img" alt="Partner 1 Logo">
+        </div>
+
+        <!-- Logo 6 -->
+        <div class="col">
+          <img src="assets/logos/apara-myaira.png" class="img-fluid logo-img" alt="Partner 2 Logo">
+        </div>
+
+        <!-- Logo 7 -->
+        <div class="col">
+          <img src="assets/logos/apara-myras.png" class="img-fluid logo-img" alt="Partner 3 Logo">
+        </div>
+
+        <!-- Logo 8 -->
+        <div class="col">
+          <img src="assets/logos/apara-aipa.png" class="img-fluid logo-img" alt="Partner 4 Logo">
+        </div>
+
+        <!-- Logo 9 -->
+        <div class="col">
+          <img src="assets/logos/apara-arr.png" class="img-fluid logo-img" alt="Partner 1 Logo">
+        </div>
+
+        <!-- Logo 10 -->
+        <div class="col">
+          <img src="assets/logos/apara-constellar.png" class="img-fluid logo-img" alt="Partner 2 Logo">
+        </div>
+
+        <!-- Logo 11 -->
+        <div class="col">
+          <img src="assets/logos/apara-ipromo.png" class="img-fluid logo-img" alt="Partner 3 Logo">
+        </div>
+
+        <!-- Logo 12 -->
+        <div class="col">
+          <img src="assets/logos/apara-aifg.png" class="img-fluid logo-img" alt="Partner 4 Logo">
+        </div>
+
+        <!-- Logo 13 -->
+        <div class="col">
+          <img src="assets/logos/apara-wodar.png" class="img-fluid logo-img" alt="Partner 1 Logo">
+        </div>
+
+        <!-- Logo 14 -->
+        <div class="col">
+          <img src="assets/logos/apara-scn.png" class="img-fluid logo-img" alt="Partner 2 Logo">
+        </div>
+
+        <!-- Logo 15 -->
+        <div class="col">
+          <img src="assets/logos/apara-ceai.png" class="img-fluid logo-img" alt="Partner 3 Logo">
+        </div>
+
+        <!-- Logo 16 -->
+        <div class="col">
+          <img src="assets/logos/apara-aica.png" class="img-fluid logo-img" alt="Partner 4 Logo">
+        </div>
+
+        <!-- Logo 17 -->
+        <div class="col">
+          <img src="assets/logos/apara-aisg.png" class="img-fluid logo-img" alt="Partner 2 Logo">
+        </div>
+
+        <!-- Logo 18 -->
+        <div class="col">
+          <img src="assets/logos/apara-du.png" class="img-fluid logo-img" alt="Partner 3 Logo">
+        </div>
+
+        <!-- Logo 19 -->
+        <div class="col">
+          <img src="assets/logos/apara-ctu.png" class="img-fluid logo-img" alt="Partner 4 Logo">
+        </div>
+
+        <!-- Logo 20 -->
+        <div class="col">
+          <img src="assets/logos/apara-smet.png" class="img-fluid logo-img" alt="Partner 1 Logo">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer container -->
+  <div id="footer-container"></div>
+
+  <svg id="hero-shape" width="0" height="0" style="position: absolute; visibility: hidden;">
+    <path id="ring-path" d="M 300,200 m -100,0 a 100,100 0 1,0 200,0 a 100,100 0 1,0 -200,0" />
+  </svg>
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script/script.js"></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('circuit-bg');
+      const ctx = canvas.getContext('2d');
+      let nodes = [];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      function getRandomRedWhiteColor() {
+        return Math.random() < 0.8 ? 'rgb(255, 77, 77)' : 'rgb(255, 255, 255)';
+      }
+
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      const NODE_COUNT = 200;
+      const SPEED = 0.3;
+      const CONNECT_DIST = 120;
+
+      for (let i = 0; i < NODE_COUNT; i++) {
+        nodes.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * SPEED,
+          vy: (Math.random() - 0.5) * SPEED,
+          color: getRandomRedWhiteColor()
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw connections
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < CONNECT_DIST) {
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw nodes
+        for (let node of nodes) {
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
+          ctx.fillStyle = node.color;
+          ctx.fill();
+
+          node.x += node.vx;
+          node.y += node.vy;
+
+          // Bounce off edges
+          if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+          if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+        }
+
+        requestAnimationFrame(draw);
+      }
+      draw();
+
+      const heroCanvas = document.getElementById('hero-canvas');
+      const heroCtx = heroCanvas.getContext('2d');
+
+      function resizeHeroCanvas() {
+        heroCanvas.width = heroCanvas.offsetWidth;
+        heroCanvas.height = heroCanvas.offsetHeight;
+      }
+      resizeHeroCanvas();
+      window.addEventListener('resize', resizeHeroCanvas);
+
+      // Ring Node Config
+      const RING_NODE_COUNT = 250;
+      const RING_RADIUS = 460;
+      const RING_THICKNESS = 50;
+      let ringNodes = [];
+
+      function generateRing(centerX, centerY) {
+        ringNodes = [];
+        for (let i = 0; i < RING_NODE_COUNT; i++) {
+          const angle = (i / RING_NODE_COUNT) * Math.PI * 2;
+          ringNodes.push({
+            angle,
+            baseRadius: RING_RADIUS + (Math.random() - 0.5) * RING_THICKNESS,
+            phase: Math.random() * Math.PI * 3,
+            speed: 0.01 + Math.random() * 0.01,
+            x: 0,
+            y: 0
+          });
+        }
+        return { centerX, centerY };
+      }
+
+      // Re-center on load
+      let center = generateRing(heroCanvas.width / 2, heroCanvas.height / 2);
+
+      // Animation
+      function drawHeroRing() {
+        heroCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+
+
+        // 🟥 Update + Draw nodes
+        for (let node of ringNodes) {
+          node.phase += 0.005; // speed of oscillation
+          const radius = node.baseRadius + Math.sin(node.phase) * (RING_THICKNESS / 2);
+
+          node.x = center.centerX + Math.cos(node.angle) * radius;
+          node.y = center.centerY + Math.sin(node.angle) * radius;
+
+          heroCtx.beginPath();
+          heroCtx.arc(node.x, node.y, 4.4, 0, Math.PI * 2);
+          heroCtx.fillStyle = "rgba(196, 40, 29, 1)"; // 0.4 = 40% opacity
+          heroCtx.fill();
+        }
+
+        // 🟥 Draw connecting lines between nearby nodes
+        for (let i = 0; i < ringNodes.length; i++) {
+          for (let j = i + 1; j < ringNodes.length; j++) {
+            const dx = ringNodes[i].x - ringNodes[j].x;
+            const dy = ringNodes[i].y - ringNodes[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 40) {
+              heroCtx.beginPath();
+              heroCtx.moveTo(ringNodes[i].x, ringNodes[i].y);
+              heroCtx.lineTo(ringNodes[j].x, ringNodes[j].y);
+              heroCtx.strokeStyle = "rgba(255, 77, 77, 0.4)";
+              heroCtx.lineWidth = 1;
+              heroCtx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(drawHeroRing);
+      }
+      drawHeroRing();
+
+      const wordEl = document.getElementById('animated-word');
+      const wrapperEl = document.getElementById('augmenting-wrapper');
+
+      const styles = [
+        { font: "'Playfair Display', serif", word: "Augmenting" },
+        { font: "'Dancing Script', cursive", word: "Augmenting" },
+        { font: "'Noto Sans JP', sans-serif", word: "強化された" },        // Japanese
+        { font: "'Roboto Condensed', sans-serif", word: "Augmenting" },
+        { font: "'Sour Gummy', cursive", word: "Augmenting" },
+        { font: "'Noto Sans Devanagari', sans-serif", word: "संवर्धित" }, // Hindi
+        { font: "'Courier Prime', monospace", word: "Augmenting" },
+        { font: "'Noto Sans Vietnamese', sans-serif", word: "Tăng Cường" }, // Vietnamese
+        { font: "'Noto Sans KR', sans-serif", word: "증강" },           // Korean
+        { font: "'Permanent Marker', cursive", word: "Augmenting" },
+        { font: "'Noto Sans SC', sans-serif", word: "增强型" },           // Chinese (Simplified)
+        { font: "'Alumni Sans SC', sans-serif", word: "מוּגבָּר" },      // Hebrew
+        { font: "'Delius Swash Caps', cursive", word: "Augmenting" },
+        { font: "'Edu QLD Hand', cursive", word: "Augmenting" },
+        { font: "'UnifrakturMaguntia', cursive", word: "Augmenting" },
+        { font: "'Noto Sans Thai', sans-serif", word: "เสริม" },     // Thai
+        { font: "'Libertinus Mono', monospace", word: "Augmenting" }
+
+      ];
+
+
+      let index = 0;
+      let fontInterval = null;
+
+      function cycleFont() {
+        const { font, word } = styles[index];
+        wordEl.style.fontFamily = font;
+        wordEl.innerText = word;
+
+        if (index === styles.length - 1) {
+          clearInterval(fontInterval);
+
+          // Replace the animated span with a new static one
+          wrapperEl.innerHTML = `<span class="fw-bold" style="font-size: 3.7rem;">Augmenting </span>`;
+          return;
+        }
+
+        index++;
+      }
+
+      cycleFont(); // apply first font immediately
+      fontInterval = setInterval(cycleFont, 400);
+
+
+    });
+  </script>
+
+
+</body>
+
+</html>

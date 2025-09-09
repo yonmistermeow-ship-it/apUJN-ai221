@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>APARA Asia</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+    <style>
+        .gallery-thumb {
+            cursor: pointer;
+        }
+        body {
+        font-family: 'Montserrat', sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="position-relative overflow-hidden" style="height: 30vh;">
+        <!-- Background Image -->
+        <img src="assets/hero_banners/activities.jpg" alt="Hero" class="position-absolute top-0 start-50 translate-middle-x w-100 h-100 object-fit-cover">
+
+        <!-- Dark overlay (optional) -->
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0,0,0,0.3);"></div>
+
+        <!-- Centered Text -->
+        <div class="position-absolute top-50 start-50 translate-middle text-white text-center px-3">
+            <h1 class="display-4 fw-bold">Our Activities</h1>
+        </div>
+    </section>
+
+    <section class="py-5 bg-white">
+        <div class="container rounded">
+            <div class="text-center mb-4">
+                <h2 class="h1">STREAMing Our Members To Their Success</h2>
+                <p class="text-muted">Call for Collaboration</p>
+            </div>
+            <!-- Block 1 -->
+            <div class="row align-items-center g-4 mb-4 p-4">
+                <div class="col-md-6 text-center order-1 order-md-1">
+                <img src="assets/activities/network.svg" alt="Member to Member" class="img-fluid rounded" style="max-height: 400px;">
+                </div>
+                <div class="col-md-6 px-5 order-2 order-md-2 text-center">
+                    <h3 class="h1 mt-2">Member to Member</h3>
+                    <small class="text-muted">
+                        Supplier — User<br>
+                        Trainer — Learner<br>
+                        Management — Staff
+                    </small>
+                </div>
+            </div>
+
+            <!-- Block 2 -->
+            <div class="row align-items-center g-4 mb-4 p-4">
+                <div class="col-md-6 px-5 order-1 order-md-1 text-center">
+                    <h3 class="h1 mt-2">Association to Association</h3>
+                    <small class="text-muted">
+                        APARA — IARA<br>
+                        APARA — Trade<br>
+                        Cross-Country
+                    </small>
+                </div>
+                <div class="col-md-6 text-center order-2 order-md-2">
+                    <img src="assets/activities/puzzle.svg" alt="Association to Association" class="img-fluid rounded" style="max-height: 400px;">
+                </div>
+            </div>
+
+            <!-- Block 3 -->
+            <div class="row align-items-center g-4 mb-4 p-4">
+                <div class="col-md-6 text-center order-1 order-md-1">
+                <img src="assets/activities/search.svg" alt="Agency to Member" class="img-fluid rounded" style="max-height: 400px;">
+                </div>
+                <div class="col-md-6 px-5 order-2 order-md-2 text-center">
+                    <h3 class="h1 mt-2">Agency to Member</h3>
+                    <small class="text-muted">
+                        Business Matching<br>
+                        Fund Raising<br>
+                        Standards
+                    </small>
+                </div>
+            </div>
+
+            <!-- Block 4 -->
+            <div class="row align-items-center g-4 mb-4 p-4">
+                <div class="col-md-6 px-5 order-1 order-md-1 text-center">
+                    <h3 class="h1 mt-2">Leadership & Standard</h3>
+                    <small class="text-muted">
+                        Innovation Leadership eForum<br>
+                        Industry Blueprints and Standards Platform<br>
+                        Competency Rating<br>
+                        Global Alignment
+                    </small>
+                </div>
+                <div class="col-md-6 text-center order-2 order-md-2">
+                    <img src="assets/activities/boss.svg" alt="Leadership & Standard" class="img-fluid rounded" style="max-height: 400px;">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Centered Banner Image -->
+    <section class="py-5 text-center bg-white">
+        <div class="container">
+            <img src="assets/activities/apara-membership-p-1600.jpeg" alt="Current Initiatives Banner"  class="card-img-top img-fluid gallery-thumb" style="max-width: 1300px;" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img="assets/activities/apara-membership-p-1600.jpeg">
+        </div>
+        <div class="container">
+            <img src="assets/activities/apara-initiatives-2.jpg" alt="Current Initiatives Banner"  class="card-img-top img-fluid gallery-thumb" style="max-width: 1300px;" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img="assets/activities/apara-initiatives-2.jpg">
+        </div>
+    </section>
+
+    <!-- Current Initiatives Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-4">
+            <h2 class="h1">Current Initiatives</h2>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
+                <!-- Card 1 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="assets/activities/apara-initiatives-2.jpg" alt="AIBotics" class="card-img-top img-fluid gallery-thumb"
+                            data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                            data-img="assets/activities/apara-initiatives-2.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">AIBotics</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="assets/activities/apara-initiatives-3.jpg" alt="StraCom — ERAI" class="card-img-top img-fluid gallery-thumb"
+                            data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                            data-img="assets/activities/apara-initiatives-3.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">StraCom — ERAI</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="assets/activities/apara-initiatives-4.jpg" alt="AIBotics Learning Communities" class="card-img-top img-fluid gallery-thumb"
+                            data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                            data-img="assets/activities/apara-initiatives-4.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">AIBotics Learning Communities (ALC)</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Bootstrap Modal -->
+    <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl"> <!-- modal-xl makes it larger -->
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-body p-0 d-flex justify-content-center align-items-center">
+                    <img id="lightboxImage" src="" alt="Zoomed image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lightbox logic
+        document.querySelectorAll('.gallery-thumb').forEach(img => {
+        img.addEventListener('click', () => {
+            const fullImg = img.getAttribute('data-img');
+            document.getElementById('lightboxImage').src = fullImg;
+        });
+        });
+    </script>
+
+        <!-- Footer container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script/script.js"></script>
+</body>
+</html>
